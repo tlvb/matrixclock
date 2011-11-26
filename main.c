@@ -31,7 +31,7 @@ for (0..$#f) {
     $el = $_-1 if $f[$_] =~ m.^// END PERL_GENERATED. and $bl > 0;
     last if $el > 0;
 }
-splice @f, $bl, $el-$bl+1, ("uint8_t font[] = {".join(', ',@columns)."};\n");
+splice @f, $bl, $el-$bl+1, ("const uint8_t font[] PROGMEM = {".join(', ',@columns)."};\n");
 untie @f;
 =pod
 #endif
@@ -39,6 +39,7 @@ untie @f;
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/pgmspace.h>
 #include <util/delay.h>
 #include <stdint.h>
 
@@ -53,6 +54,7 @@ untie @f;
 #define ROWSEED PD2
 #define ROWCLOCK PC5
 #define ROWCLEAR PC4
+#define SHIFTLAG 3
 
 void display_setup(void);
 void display_seed(void);
@@ -62,14 +64,14 @@ void display_writecol(uint8_t c);
 void timer_setup(void);
 
 volatile uint8_t column = 0;
-volatile uint16_t subseconds = 0;
-volatile uint8_t seconds = 0;
-volatile uint8_t digits[4] = {0,0,0,0};
-volatile uint8_t digits_n[4] = {1,1,1,1};
-volatile uint8_t shift[4];
+volatile uint16_t subdseconds = 0;
+volatile uint16_t dseconds = 0;
+volatile uint8_t time[4] = {0,0,0,0};
+volatile uint8_t time_p[4] = {0,0,0,0};
+volatile uint8_t shift[4] = {0,0,0,0};
 
 // BEGIN PERL_GENERATED
-uint8_t font[] = {0x3e, 0x71, 0x49, 0x47, 0x3e, 0x42, 0x42, 0x7f, 0x40, 0x40, 0x42, 0x61, 0x51, 0x49, 0x46, 0x22, 0x49, 0x49, 0x49, 0x36, 0x0f, 0x08, 0x08, 0x08, 0x7f, 0x4f, 0x49, 0x49, 0x49, 0x31, 0x3c, 0x4a, 0x49, 0x49, 0x30, 0x01, 0x01, 0x71, 0x09, 0x07, 0x36, 0x49, 0x49, 0x49, 0x36, 0x06, 0x49, 0x49, 0x29, 0x1e};
+const uint8_t font[] PROGMEM = {0x3e, 0x71, 0x49, 0x47, 0x3e, 0x42, 0x42, 0x7f, 0x40, 0x40, 0x42, 0x61, 0x51, 0x49, 0x46, 0x22, 0x41, 0x49, 0x49, 0x36, 0x0f, 0x08, 0x08, 0x08, 0x7f, 0x4f, 0x49, 0x49, 0x49, 0x31, 0x3c, 0x4a, 0x49, 0x49, 0x30, 0x01, 0x01, 0x71, 0x09, 0x07, 0x36, 0x49, 0x49, 0x49, 0x36, 0x06, 0x49, 0x49, 0x29, 0x1e};
 // END PERL_GENERATED
 
 volatile uint8_t framebuffer[24];
@@ -80,30 +82,28 @@ int main(void) {
     timer_setup();
     sei();
     for (;;) {
-
-        framebuffer[0] = digits[0];
-        framebuffer[1] = digits_n[0];
-
-        framebuffer[3] = digits[1];
-        framebuffer[4] = digits_n[1];
-
-        framebuffer[6] = digits[2];
-        framebuffer[7] = digits_n[2];
-
-        framebuffer[9] = digits[3];
-        framebuffer[10] = digits_n[3];
-
-        framebuffer[14] = seconds;
-        framebuffer[16] = subseconds >> 8;
-        framebuffer[17] = subseconds & 0xff;
-/*
         for (uint8_t i=0; i<5; ++i) {
-            framebuffer[i] = font[digits[0]*5+i];
-            framebuffer[i+6] = font[digits[1]*5+i];
-            framebuffer[i+13] = font[digits[2]*5+i];
-            framebuffer[i+19] = font[digits[3]*5+i];
+
+            uint8_t byte0, byte1;
+
+            byte0 = pgm_read_byte(&font[time[0]*5+i]);
+            byte1 = pgm_read_byte(&font[time_p[0]*5+i]);
+            framebuffer[i] = (byte0>>shift[0])|(byte1<<(11-shift[0]));
+
+            byte0 = pgm_read_byte(&font[time[1]*5+i]);
+            byte1 = pgm_read_byte(&font[time_p[1]*5+i]);
+            framebuffer[6+i] = (byte0>>shift[1])|(byte1<<(11-shift[1]));
+
+            byte0 = pgm_read_byte(&font[time[2]*5+i]);
+            byte1 = pgm_read_byte(&font[time_p[2]*5+i]);
+            framebuffer[13+i] = (byte0>>shift[2])|(byte1<<(11-shift[2]));
+
+            byte0 = pgm_read_byte(&font[time[3]*5+i]);
+            byte1 = pgm_read_byte(&font[time_p[3]*5+i]);
+            framebuffer[19+i] = (byte0>>shift[3])|(byte1<<(11-shift[3]));
+
         }
-*/
+
     }
 
 }
@@ -142,48 +142,44 @@ void timer_setup(void) {
 
 ISR(TIMER1_COMPA_vect) {
 
-
-    if (++subseconds == 5000) {
-        subseconds = 0;
-        if (++seconds == 60) {
-            seconds = 0;
-            if (++digits[3] == 10) {
-                digits[3] = 0;
-                if (++digits[2] == 6) {
-                    digits[2] = 0;
-                    ++digits[1];
-                    if (digits[1] == 4) {
-                        if (digits[0] == 2) {
-                            digits[1] = 0;
-                            digits[0] = 0;
-                        }
-                    }
-                    else if (digits[1] == 10) {
-                        ++digits[0];
-                        digits[1] = 0;
-                    }
-                }
-            }
-            for (uint8_t i=0; i<4; ++i)
-                digits_n[i] = digits[i]+1;
-            if (digits_n[3] == 10) {
-                digits_n[3] = 0;
-                if (digits_n[2] == 6) {
-                    digits_n[2] = 0;
-                    digits_n[1];
-                    if (digits_n[1] == 4) {
-                        if (digits_n[0] == 2) {
-                            digits_n[1] = 0;
-                            digits_n[0] = 0;
-                        }
-                    }
-                    else if (digits_n[1] == 10) {
-                        digits_n[1] = 0;
-                    }
-                }
-            }
+    if (++subdseconds == 500) {
+        subdseconds = 0;
+        if (++dseconds == 600) {
+            dseconds = 0;
+            time_p[3] = time[3];
+            shift[3] = 12;
+            if (++time[3] == 10)
+                time[3] = 0;
         }
+        if (time[3] == 0 && shift[3] == (12-SHIFTLAG)) {
+            time_p[2] = time[2];
+            shift[2] = 12;
+            if (++time[2] == 6) 
+                time[2] = 0;
+        }
+        if (time[2] == 0 && shift[2] == (12-SHIFTLAG)) {
+            time_p[1] = time[1];
+            shift[1] = 12;
+            ++time[1];
+            if (time[1] == 10 || (time[0] == 2 && time[1] == 4))
+                time[1] = 0;
+        }
+        if (time[1] == 0 && shift[1] == (12-SHIFTLAG)) {
+            time_p[0] = time[0];
+            shift[0] = 12;
+            if (++time[0] == 3)
+                time[0] = 0;
+        }
+
+
+        for (uint8_t i=0; i<4; ++i)
+            if (shift[i] > 0)
+                --shift[i];
     }
+
+
+
+
     if (++column == 24) {
         column = 0;
         display_seed();
