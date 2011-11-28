@@ -56,6 +56,10 @@ untie @f;
 #define ROWCLEAR PC4
 #define SHIFTLAG 3
 
+void input_setup(void);
+uint8_t input_read(void);
+void buzzer_setup(void);
+void buzzer_set(uint8_t beep);
 void display_setup(void);
 void display_seed(void);
 void display_next(void);
@@ -64,9 +68,9 @@ void display_writecol(uint8_t c);
 void timer_setup(void);
 
 volatile uint8_t column = 0;
-volatile uint16_t subdseconds = 0;
-volatile uint16_t dseconds = 0;
-volatile uint8_t time[4] = {0,0,0,0};
+volatile uint16_t subsubminutes = 0;
+volatile uint16_t subminutes = 0;
+volatile uint8_t time[4] = {1,4,5,0};
 volatile uint8_t time_p[4] = {0,0,0,0};
 volatile uint8_t shift[4] = {0,0,0,0};
 
@@ -80,7 +84,11 @@ int main(void) {
 
     display_setup();
     timer_setup();
+    input_setup();
+    buzzer_setup();
     sei();
+
+
     for (;;) {
         for (uint8_t i=0; i<5; ++i) {
 
@@ -102,10 +110,56 @@ int main(void) {
             byte1 = pgm_read_byte(&font[time_p[3]*5+i]);
             framebuffer[19+i] = (byte0>>shift[3])|(byte1<<(11-shift[3]));
 
+            switch (0xf-input_read()) {
+                case 1:
+                    buzzer_set(1);
+                    break;
+                case 2:
+                    buzzer_set((subsubminutes&8)>>3);
+                    break;
+                case 4:
+                    buzzer_set((subsubminutes&16)>>4);
+                    break;
+                case 8:
+                        if (subminutes & 32)
+                            buzzer_set(((subsubminutes&128)>>7)&((subsubminutes&32)>>5));
+                        else
+                            buzzer_set(0);
+                    break;
+                default:
+                    buzzer_set(0);
+                    break;
+                }
         }
 
     }
 
+}
+
+void input_setup(void) {
+    // io0 = PD3
+    // io1 = PB7
+    // io2 = PB0
+    // io3 = PB1
+    DDRD &=~ _BV(PD3);  // inputs
+    PORTD |= _BV(PD3);  // pull-ups
+    DDRB &=~ _BV(PB7) | _BV(PB0) | _BV(PB1);    // inputs
+    PORTB |= _BV(PB7) | _BV(PB0) | _BV(PB1);    // pull-ups
+}
+
+uint8_t input_read(void) {
+    return ((PIND>>3)&1) | ((PINB>>6)&2) | ((PINB<<2)&0x0c);
+}
+
+void buzzer_setup(void) {
+    DDRB |= _BV(PB2);
+}
+
+void buzzer_set(uint8_t beep) {
+    if (beep != 0)
+        PORTB |= _BV(PB2);
+    else
+        PORTB &=~ _BV(PB2);
 }
 
 void display_setup(void) {
@@ -142,10 +196,10 @@ void timer_setup(void) {
 
 ISR(TIMER1_COMPA_vect) {
 
-    if (++subdseconds == 500) {
-        subdseconds = 0;
-        if (++dseconds == 600) {
-            dseconds = 0;
+    if (++subsubminutes == 250) {
+        subsubminutes = 0;
+        if (++subminutes == 1200) {
+            subminutes = 0;
             time_p[3] = time[3];
             shift[3] = 12;
             if (++time[3] == 10)
@@ -176,9 +230,6 @@ ISR(TIMER1_COMPA_vect) {
             if (shift[i] > 0)
                 --shift[i];
     }
-
-
-
 
     if (++column == 24) {
         column = 0;
