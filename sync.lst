@@ -1,0 +1,1358 @@
+GAS LISTING /tmp/ccNyAo89.s 			page 1
+
+
+   1               		.file	"sync.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/leo/prog/matrixclock/",100,0,2,.Ltext0
+  10               		.stabs	"sync.c",100,0,2,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,0,0
+  15               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,0,0
+  16               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,0,0
+  17               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,0,0
+  18               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,0,0
+  19               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,0,
+  20               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,0,0
+  21               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,0,0
+  22               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,0,0
+  23               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,0,0
+  24               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  25               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,0,0
+  26               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,0,0
+  27               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,0,0
+  28               		.stabs	"void:t(0,15)=(0,15)",128,0,0,0
+  29               		.stabs	"sync.h",130,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.6.2/../../../../avr/include/avr/pgmspace.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.6.2/../../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.6.2/include/stdint.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.6.2/../../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(5,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(5,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(5,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(5,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(5,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(5,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(5,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(5,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(5,9)=(5,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(5,10)=(5,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(5,11)=(5,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(5,12)=(5,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(5,13)=(5,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(5,14)=(5,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(5,15)=(5,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(5,16)=(5,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(5,17)=(5,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(5,18)=(5,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(5,19)=(5,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(5,20)=(5,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(5,21)=(5,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(5,22)=(5,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(5,23)=(5,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(5,24)=(5,6)",128,0,238,0
+GAS LISTING /tmp/ccNyAo89.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(5,25)=(5,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(5,26)=(5,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(5,27)=(5,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(5,28)=(5,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabn	162,0,0,0
+  64               		.stabs	"int_farptr_t:t(3,1)=(5,5)",128,0,77,0
+  65               		.stabs	"uint_farptr_t:t(3,2)=(5,6)",128,0,81,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.6.2/include/stddef.h",130,0,0,0
+  68               		.stabs	"size_t:t(6,1)=(0,4)",128,0,212,0
+  69               		.stabn	162,0,0,0
+  70               		.stabs	"/usr/lib/gcc/avr/4.6.2/../../../../avr/include/avr/io.h",130,0,0,0
+  71               		.stabs	"/usr/lib/gcc/avr/4.6.2/../../../../avr/include/avr/fuse.h",130,0,0,0
+  72               		.stabs	"__fuse_t:t(8,1)=(8,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,244,0
+  73               		.stabn	162,0,0,0
+  74               		.stabn	162,0,0,0
+  75               		.stabs	"prog_void:t(2,1)=(2,2)=(2,2)",128,0,217,0
+  76               		.stabs	"prog_char:t(2,3)=(2,4)=@s8;r(2,4);0;255;",128,0,218,0
+  77               		.stabs	"prog_uchar:t(2,5)=(2,6)=@s8;r(2,6);0;255;",128,0,219,0
+  78               		.stabs	"prog_int8_t:t(2,7)=(2,8)=(0,10)",128,0,221,0
+  79               		.stabs	"prog_uint8_t:t(2,9)=(2,10)=(0,11)",128,0,222,0
+  80               		.stabs	"prog_int16_t:t(2,11)=(2,12)=(0,1)",128,0,223,0
+  81               		.stabs	"prog_uint16_t:t(2,13)=(2,14)=(0,4)",128,0,224,0
+  82               		.stabs	"prog_int32_t:t(2,15)=(2,16)=(0,3)",128,0,225,0
+  83               		.stabs	"prog_uint32_t:t(2,17)=(2,18)=(0,5)",128,0,226,0
+  84               		.stabs	"prog_int64_t:t(2,19)=(2,20)=(0,6)",128,0,228,0
+  85               		.stabs	"prog_uint64_t:t(2,21)=(2,22)=(0,7)",128,0,229,0
+  86               		.stabn	162,0,0,0
+  87               		.stabn	162,0,0,0
+  88               		.stabs	"sync_clear_screen:F(0,15)",36,0,3,sync_clear_screen
+  89               	.global	sync_clear_screen
+  90               		.type	sync_clear_screen, @function
+  91               	sync_clear_screen:
+  92               		.stabd	46,0,0
+   1:sync.c        **** #include "sync.h"
+   2:sync.c        **** 
+   3:sync.c        **** void sync_clear_screen(void) {
+  93               		.stabn	68,0,3,.LM0-.LFBB1
+  94               	.LM0:
+  95               	.LFBB1:
+  96               	/* prologue: function */
+  97               	/* frame size = 0 */
+  98               	/* stack size = 0 */
+  99               	.L__stack_usage = 0
+ 100               		.stabn	68,0,3,.LM1-.LFBB1
+ 101               	.LM1:
+ 102 0000 80E0      		ldi r24,lo8(0)
+ 103 0002 90E0      		ldi r25,hi8(0)
+ 104               	.L2:
+ 105               	.LBB2:
+   4:sync.c        ****     for (uint8_t i=0; i<24; ++i)
+   5:sync.c        ****         framebuffer[i] = 0;
+ 106               		.stabn	68,0,5,.LM2-.LFBB1
+ 107               	.LM2:
+ 108 0004 FC01      		movw r30,r24
+ 109 0006 E050      		subi r30,lo8(-(framebuffer))
+GAS LISTING /tmp/ccNyAo89.s 			page 3
+
+
+ 110 0008 F040      		sbci r31,hi8(-(framebuffer))
+ 111 000a 1082      		st Z,__zero_reg__
+ 112 000c 0196      		adiw r24,1
+   4:sync.c        ****     for (uint8_t i=0; i<24; ++i)
+ 113               		.stabn	68,0,4,.LM3-.LFBB1
+ 114               	.LM3:
+ 115 000e 8831      		cpi r24,24
+ 116 0010 9105      		cpc r25,__zero_reg__
+ 117 0012 01F4      		brne .L2
+ 118               	/* epilogue start */
+ 119               	.LBE2:
+   6:sync.c        **** }
+ 120               		.stabn	68,0,6,.LM4-.LFBB1
+ 121               	.LM4:
+ 122 0014 0895      		ret
+ 123               		.size	sync_clear_screen, .-sync_clear_screen
+ 124               	.Lscope1:
+ 125               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 126               		.stabd	78,0,0
+ 127               		.stabs	"sync_show_time:F(0,15)",36,0,8,sync_show_time
+ 128               		.stabs	"alarm_blink:P(5,2)",64,0,8,23
+ 129               	.global	sync_show_time
+ 130               		.type	sync_show_time, @function
+ 131               	sync_show_time:
+ 132               		.stabd	46,0,0
+   7:sync.c        **** 
+   8:sync.c        **** void sync_show_time(uint8_t alarm_blink) {
+ 133               		.stabn	68,0,8,.LM5-.LFBB2
+ 134               	.LM5:
+ 135               	.LFBB2:
+ 136 0016 1F93      		push r17
+ 137 0018 CF93      		push r28
+ 138 001a DF93      		push r29
+ 139               	/* prologue: function */
+ 140               	/* frame size = 0 */
+ 141               	/* stack size = 3 */
+ 142               	.L__stack_usage = 3
+ 143 001c 782F      		mov r23,r24
+ 144               		.stabn	68,0,8,.LM6-.LFBB2
+ 145               	.LM6:
+ 146 001e 40E0      		ldi r20,lo8(0)
+ 147 0020 50E0      		ldi r21,hi8(0)
+ 148               	.LBB3:
+ 149               	.LBB4:
+   9:sync.c        **** 
+  10:sync.c        ****     for (uint8_t i=0; i<5; ++i) {
+  11:sync.c        **** 
+  12:sync.c        ****         uint8_t byte0, byte1;
+  13:sync.c        **** 
+  14:sync.c        ****         byte0 = pgm_read_byte(&font[time[0]*5+i]);
+  15:sync.c        ****         byte1 = pgm_read_byte(&font[time_p[0]*5+i]);
+  16:sync.c        ****         framebuffer[i] = (byte0>>shift[0])|(byte1<<(11-shift[0])) | (subminutes & 0x04 && alarm_bli
+ 150               		.stabn	68,0,16,.LM7-.LFBB2
+ 151               	.LM7:
+ 152 0022 CBE0      		ldi r28,lo8(11)
+ 153 0024 D0E0      		ldi r29,hi8(11)
+ 154               	.L9:
+GAS LISTING /tmp/ccNyAo89.s 			page 4
+
+
+ 155               	.LBB5:
+  14:sync.c        ****         byte0 = pgm_read_byte(&font[time[0]*5+i]);
+ 156               		.stabn	68,0,14,.LM8-.LFBB2
+ 157               	.LM8:
+ 158 0026 8091 0000 		lds r24,time
+ 159 002a 90E0      		ldi r25,lo8(0)
+ 160 002c FC01      		movw r30,r24
+ 161 002e EE0F      		lsl r30
+ 162 0030 FF1F      		rol r31
+ 163 0032 EE0F      		lsl r30
+ 164 0034 FF1F      		rol r31
+ 165 0036 E80F      		add r30,r24
+ 166 0038 F91F      		adc r31,r25
+ 167 003a E40F      		add r30,r20
+ 168 003c F51F      		adc r31,r21
+ 169 003e E050      		subi r30,lo8(-(font))
+ 170 0040 F040      		sbci r31,hi8(-(font))
+ 171               	/* #APP */
+ 172               	 ;  14 "sync.c" 1
+ 173 0042 6491      		lpm r22, Z
+ 174               		
+ 175               	 ;  0 "" 2
+ 176               	/* #NOAPP */
+ 177               	.LBE5:
+ 178               	.LBB6:
+  15:sync.c        ****         byte1 = pgm_read_byte(&font[time_p[0]*5+i]);
+ 179               		.stabn	68,0,15,.LM9-.LFBB2
+ 180               	.LM9:
+ 181 0044 2091 0000 		lds r18,time_p
+ 182 0048 30E0      		ldi r19,lo8(0)
+ 183 004a F901      		movw r30,r18
+ 184 004c EE0F      		lsl r30
+ 185 004e FF1F      		rol r31
+ 186 0050 EE0F      		lsl r30
+ 187 0052 FF1F      		rol r31
+ 188 0054 E20F      		add r30,r18
+ 189 0056 F31F      		adc r31,r19
+ 190 0058 E40F      		add r30,r20
+ 191 005a F51F      		adc r31,r21
+ 192 005c E050      		subi r30,lo8(-(font))
+ 193 005e F040      		sbci r31,hi8(-(font))
+ 194               	/* #APP */
+ 195               	 ;  15 "sync.c" 1
+ 196 0060 E491      		lpm r30, Z
+ 197               		
+ 198               	 ;  0 "" 2
+ 199               	/* #NOAPP */
+ 200               	.LBE6:
+ 201               		.stabn	68,0,16,.LM10-.LFBB2
+ 202               	.LM10:
+ 203 0062 A091 0000 		lds r26,shift
+ 204 0066 2091 0000 		lds r18,shift
+ 205 006a 8E2F      		mov r24,r30
+ 206 006c 90E0      		ldi r25,lo8(0)
+ 207 006e FE01      		movw r30,r28
+ 208 0070 E21B      		sub r30,r18
+ 209 0072 F109      		sbc r31,__zero_reg__
+GAS LISTING /tmp/ccNyAo89.s 			page 5
+
+
+ 210 0074 00C0      		rjmp 2f
+ 211 0076 880F      	1:	lsl r24
+ 212 0078 991F      		rol r25
+ 213 007a EA95      	2:	dec r30
+ 214 007c 02F4      		brpl 1b
+ 215 007e E62F      		mov r30,r22
+ 216 0080 F0E0      		ldi r31,lo8(0)
+ 217 0082 00C0      		rjmp 2f
+ 218 0084 F595      	1:	asr r31
+ 219 0086 E795      		ror r30
+ 220 0088 AA95      	2:	dec r26
+ 221 008a 02F4      		brpl 1b
+ 222 008c E82B      		or r30,r24
+ 223 008e 2091 0000 		lds r18,subminutes
+ 224 0092 3091 0000 		lds r19,subminutes+1
+ 225 0096 22FF      		sbrs r18,2
+ 226 0098 00C0      		rjmp .L10
+ 227               		.stabn	68,0,16,.LM11-.LFBB2
+ 228               	.LM11:
+ 229 009a 7723      		tst r23
+ 230 009c 01F4      		brne .L11
+ 231               	.L10:
+ 232               		.stabn	68,0,16,.LM12-.LFBB2
+ 233               	.LM12:
+ 234 009e 90E0      		ldi r25,lo8(0)
+ 235 00a0 00C0      		rjmp .L5
+ 236               	.L11:
+ 237 00a2 90E8      		ldi r25,lo8(-128)
+ 238               	.L5:
+ 239               		.stabn	68,0,16,.LM13-.LFBB2
+ 240               	.LM13:
+ 241 00a4 9E2B      		or r25,r30
+ 242 00a6 DA01      		movw r26,r20
+ 243 00a8 A050      		subi r26,lo8(-(framebuffer))
+ 244 00aa B040      		sbci r27,hi8(-(framebuffer))
+ 245 00ac 9C93      		st X,r25
+ 246               	.LBB7:
+  17:sync.c        **** 
+  18:sync.c        ****         byte0 = pgm_read_byte(&font[time[1]*5+i]);
+ 247               		.stabn	68,0,18,.LM14-.LFBB2
+ 248               	.LM14:
+ 249 00ae 8091 0000 		lds r24,time+1
+ 250 00b2 90E0      		ldi r25,lo8(0)
+ 251 00b4 FC01      		movw r30,r24
+ 252 00b6 EE0F      		lsl r30
+ 253 00b8 FF1F      		rol r31
+ 254 00ba EE0F      		lsl r30
+ 255 00bc FF1F      		rol r31
+ 256 00be E80F      		add r30,r24
+ 257 00c0 F91F      		adc r31,r25
+ 258 00c2 E40F      		add r30,r20
+ 259 00c4 F51F      		adc r31,r21
+ 260 00c6 E050      		subi r30,lo8(-(font))
+ 261 00c8 F040      		sbci r31,hi8(-(font))
+ 262               	/* #APP */
+ 263               	 ;  18 "sync.c" 1
+ 264 00ca 6491      		lpm r22, Z
+GAS LISTING /tmp/ccNyAo89.s 			page 6
+
+
+ 265               		
+ 266               	 ;  0 "" 2
+ 267               	/* #NOAPP */
+ 268               	.LBE7:
+ 269               	.LBB8:
+  19:sync.c        ****         byte1 = pgm_read_byte(&font[time_p[1]*5+i]);
+ 270               		.stabn	68,0,19,.LM15-.LFBB2
+ 271               	.LM15:
+ 272 00cc 8091 0000 		lds r24,time_p+1
+ 273 00d0 90E0      		ldi r25,lo8(0)
+ 274 00d2 FC01      		movw r30,r24
+ 275 00d4 EE0F      		lsl r30
+ 276 00d6 FF1F      		rol r31
+ 277 00d8 EE0F      		lsl r30
+ 278 00da FF1F      		rol r31
+ 279 00dc E80F      		add r30,r24
+ 280 00de F91F      		adc r31,r25
+ 281 00e0 E40F      		add r30,r20
+ 282 00e2 F51F      		adc r31,r21
+ 283 00e4 E050      		subi r30,lo8(-(font))
+ 284 00e6 F040      		sbci r31,hi8(-(font))
+ 285               	/* #APP */
+ 286               	 ;  19 "sync.c" 1
+ 287 00e8 2491      		lpm r18, Z
+ 288               		
+ 289               	 ;  0 "" 2
+   8:sync.c        **** void sync_show_time(uint8_t alarm_blink) {
+ 290               		.stabn	68,0,8,.LM16-.LFBB2
+ 291               	.LM16:
+ 292               	/* #NOAPP */
+ 293 00ea DA01      		movw r26,r20
+ 294 00ec 1696      		adiw r26,6
+ 295               	.LBE8:
+  20:sync.c        ****         framebuffer[6+i] = (byte0>>shift[1])|(byte1<<(11-shift[1])) | (subminutes & 0x04 && alarm_b
+ 296               		.stabn	68,0,20,.LM17-.LFBB2
+ 297               	.LM17:
+ 298 00ee 1091 0000 		lds r17,shift+1
+ 299 00f2 8091 0000 		lds r24,shift+1
+ 300 00f6 30E0      		ldi r19,lo8(0)
+ 301 00f8 FE01      		movw r30,r28
+ 302 00fa E81B      		sub r30,r24
+ 303 00fc F109      		sbc r31,__zero_reg__
+ 304 00fe 00C0      		rjmp 2f
+ 305 0100 220F      	1:	lsl r18
+ 306 0102 331F      		rol r19
+ 307 0104 EA95      	2:	dec r30
+ 308 0106 02F4      		brpl 1b
+ 309 0108 E62F      		mov r30,r22
+ 310 010a F0E0      		ldi r31,lo8(0)
+ 311 010c 00C0      		rjmp 2f
+ 312 010e F595      	1:	asr r31
+ 313 0110 E795      		ror r30
+ 314 0112 1A95      	2:	dec r17
+ 315 0114 02F4      		brpl 1b
+ 316 0116 E22B      		or r30,r18
+ 317 0118 8091 0000 		lds r24,subminutes
+ 318 011c 9091 0000 		lds r25,subminutes+1
+GAS LISTING /tmp/ccNyAo89.s 			page 7
+
+
+ 319 0120 82FF      		sbrs r24,2
+ 320 0122 00C0      		rjmp .L12
+ 321               		.stabn	68,0,20,.LM18-.LFBB2
+ 322               	.LM18:
+ 323 0124 7723      		tst r23
+ 324 0126 01F4      		brne .L13
+ 325               	.L12:
+ 326               		.stabn	68,0,20,.LM19-.LFBB2
+ 327               	.LM19:
+ 328 0128 80E0      		ldi r24,lo8(0)
+ 329 012a 00C0      		rjmp .L6
+ 330               	.L13:
+ 331 012c 80E8      		ldi r24,lo8(-128)
+ 332               	.L6:
+ 333               		.stabn	68,0,20,.LM20-.LFBB2
+ 334               	.LM20:
+ 335 012e 8E2B      		or r24,r30
+ 336 0130 A050      		subi r26,lo8(-(framebuffer))
+ 337 0132 B040      		sbci r27,hi8(-(framebuffer))
+ 338 0134 8C93      		st X,r24
+ 339               	.LBB9:
+  21:sync.c        **** 
+  22:sync.c        ****         byte0 = pgm_read_byte(&font[time[2]*5+i]);
+ 340               		.stabn	68,0,22,.LM21-.LFBB2
+ 341               	.LM21:
+ 342 0136 8091 0000 		lds r24,time+2
+ 343 013a 90E0      		ldi r25,lo8(0)
+ 344 013c FC01      		movw r30,r24
+ 345 013e EE0F      		lsl r30
+ 346 0140 FF1F      		rol r31
+ 347 0142 EE0F      		lsl r30
+ 348 0144 FF1F      		rol r31
+ 349 0146 E80F      		add r30,r24
+ 350 0148 F91F      		adc r31,r25
+ 351 014a E40F      		add r30,r20
+ 352 014c F51F      		adc r31,r21
+ 353 014e E050      		subi r30,lo8(-(font))
+ 354 0150 F040      		sbci r31,hi8(-(font))
+ 355               	/* #APP */
+ 356               	 ;  22 "sync.c" 1
+ 357 0152 6491      		lpm r22, Z
+ 358               		
+ 359               	 ;  0 "" 2
+ 360               	/* #NOAPP */
+ 361               	.LBE9:
+ 362               	.LBB10:
+  23:sync.c        ****         byte1 = pgm_read_byte(&font[time_p[2]*5+i]);
+ 363               		.stabn	68,0,23,.LM22-.LFBB2
+ 364               	.LM22:
+ 365 0154 8091 0000 		lds r24,time_p+2
+ 366 0158 90E0      		ldi r25,lo8(0)
+ 367 015a FC01      		movw r30,r24
+ 368 015c EE0F      		lsl r30
+ 369 015e FF1F      		rol r31
+ 370 0160 EE0F      		lsl r30
+ 371 0162 FF1F      		rol r31
+ 372 0164 E80F      		add r30,r24
+GAS LISTING /tmp/ccNyAo89.s 			page 8
+
+
+ 373 0166 F91F      		adc r31,r25
+ 374 0168 E40F      		add r30,r20
+ 375 016a F51F      		adc r31,r21
+ 376 016c E050      		subi r30,lo8(-(font))
+ 377 016e F040      		sbci r31,hi8(-(font))
+ 378               	/* #APP */
+ 379               	 ;  23 "sync.c" 1
+ 380 0170 2491      		lpm r18, Z
+ 381               		
+ 382               	 ;  0 "" 2
+   8:sync.c        **** void sync_show_time(uint8_t alarm_blink) {
+ 383               		.stabn	68,0,8,.LM23-.LFBB2
+ 384               	.LM23:
+ 385               	/* #NOAPP */
+ 386 0172 DA01      		movw r26,r20
+ 387 0174 1D96      		adiw r26,13
+ 388               	.LBE10:
+  24:sync.c        ****         framebuffer[13+i] = (byte0>>shift[2])|(byte1<<(11-shift[2])) | (subminutes & 0x04 && alarm_
+ 389               		.stabn	68,0,24,.LM24-.LFBB2
+ 390               	.LM24:
+ 391 0176 1091 0000 		lds r17,shift+2
+ 392 017a 8091 0000 		lds r24,shift+2
+ 393 017e 30E0      		ldi r19,lo8(0)
+ 394 0180 FE01      		movw r30,r28
+ 395 0182 E81B      		sub r30,r24
+ 396 0184 F109      		sbc r31,__zero_reg__
+ 397 0186 00C0      		rjmp 2f
+ 398 0188 220F      	1:	lsl r18
+ 399 018a 331F      		rol r19
+ 400 018c EA95      	2:	dec r30
+ 401 018e 02F4      		brpl 1b
+ 402 0190 E62F      		mov r30,r22
+ 403 0192 F0E0      		ldi r31,lo8(0)
+ 404 0194 00C0      		rjmp 2f
+ 405 0196 F595      	1:	asr r31
+ 406 0198 E795      		ror r30
+ 407 019a 1A95      	2:	dec r17
+ 408 019c 02F4      		brpl 1b
+ 409 019e E22B      		or r30,r18
+ 410 01a0 8091 0000 		lds r24,subminutes
+ 411 01a4 9091 0000 		lds r25,subminutes+1
+ 412 01a8 82FF      		sbrs r24,2
+ 413 01aa 00C0      		rjmp .L14
+ 414               		.stabn	68,0,24,.LM25-.LFBB2
+ 415               	.LM25:
+ 416 01ac 7723      		tst r23
+ 417 01ae 01F4      		brne .L15
+ 418               	.L14:
+ 419               		.stabn	68,0,24,.LM26-.LFBB2
+ 420               	.LM26:
+ 421 01b0 80E0      		ldi r24,lo8(0)
+ 422 01b2 00C0      		rjmp .L7
+ 423               	.L15:
+ 424 01b4 80E8      		ldi r24,lo8(-128)
+ 425               	.L7:
+ 426               		.stabn	68,0,24,.LM27-.LFBB2
+ 427               	.LM27:
+GAS LISTING /tmp/ccNyAo89.s 			page 9
+
+
+ 428 01b6 8E2B      		or r24,r30
+ 429 01b8 A050      		subi r26,lo8(-(framebuffer))
+ 430 01ba B040      		sbci r27,hi8(-(framebuffer))
+ 431 01bc 8C93      		st X,r24
+ 432               	.LBB11:
+  25:sync.c        **** 
+  26:sync.c        ****         byte0 = pgm_read_byte(&font[time[3]*5+i]);
+ 433               		.stabn	68,0,26,.LM28-.LFBB2
+ 434               	.LM28:
+ 435 01be 8091 0000 		lds r24,time+3
+ 436 01c2 90E0      		ldi r25,lo8(0)
+ 437 01c4 FC01      		movw r30,r24
+ 438 01c6 EE0F      		lsl r30
+ 439 01c8 FF1F      		rol r31
+ 440 01ca EE0F      		lsl r30
+ 441 01cc FF1F      		rol r31
+ 442 01ce E80F      		add r30,r24
+ 443 01d0 F91F      		adc r31,r25
+ 444 01d2 E40F      		add r30,r20
+ 445 01d4 F51F      		adc r31,r21
+ 446 01d6 E050      		subi r30,lo8(-(font))
+ 447 01d8 F040      		sbci r31,hi8(-(font))
+ 448               	/* #APP */
+ 449               	 ;  26 "sync.c" 1
+ 450 01da 6491      		lpm r22, Z
+ 451               		
+ 452               	 ;  0 "" 2
+ 453               	/* #NOAPP */
+ 454               	.LBE11:
+ 455               	.LBB12:
+  27:sync.c        ****         byte1 = pgm_read_byte(&font[time_p[3]*5+i]);
+ 456               		.stabn	68,0,27,.LM29-.LFBB2
+ 457               	.LM29:
+ 458 01dc 8091 0000 		lds r24,time_p+3
+ 459 01e0 90E0      		ldi r25,lo8(0)
+ 460 01e2 FC01      		movw r30,r24
+ 461 01e4 EE0F      		lsl r30
+ 462 01e6 FF1F      		rol r31
+ 463 01e8 EE0F      		lsl r30
+ 464 01ea FF1F      		rol r31
+ 465 01ec E80F      		add r30,r24
+ 466 01ee F91F      		adc r31,r25
+ 467 01f0 E40F      		add r30,r20
+ 468 01f2 F51F      		adc r31,r21
+ 469 01f4 E050      		subi r30,lo8(-(font))
+ 470 01f6 F040      		sbci r31,hi8(-(font))
+ 471               	/* #APP */
+ 472               	 ;  27 "sync.c" 1
+ 473 01f8 2491      		lpm r18, Z
+ 474               		
+ 475               	 ;  0 "" 2
+   8:sync.c        **** void sync_show_time(uint8_t alarm_blink) {
+ 476               		.stabn	68,0,8,.LM30-.LFBB2
+ 477               	.LM30:
+ 478               	/* #NOAPP */
+ 479 01fa DA01      		movw r26,r20
+ 480 01fc 5396      		adiw r26,19
+GAS LISTING /tmp/ccNyAo89.s 			page 10
+
+
+ 481               	.LBE12:
+  28:sync.c        ****         framebuffer[19+i] = (byte0>>shift[3])|(byte1<<(11-shift[3])) | (subminutes & 0x04 && alarm_
+ 482               		.stabn	68,0,28,.LM31-.LFBB2
+ 483               	.LM31:
+ 484 01fe 1091 0000 		lds r17,shift+3
+ 485 0202 8091 0000 		lds r24,shift+3
+ 486 0206 30E0      		ldi r19,lo8(0)
+ 487 0208 FE01      		movw r30,r28
+ 488 020a E81B      		sub r30,r24
+ 489 020c F109      		sbc r31,__zero_reg__
+ 490 020e 00C0      		rjmp 2f
+ 491 0210 220F      	1:	lsl r18
+ 492 0212 331F      		rol r19
+ 493 0214 EA95      	2:	dec r30
+ 494 0216 02F4      		brpl 1b
+ 495 0218 E62F      		mov r30,r22
+ 496 021a F0E0      		ldi r31,lo8(0)
+ 497 021c 00C0      		rjmp 2f
+ 498 021e F595      	1:	asr r31
+ 499 0220 E795      		ror r30
+ 500 0222 1A95      	2:	dec r17
+ 501 0224 02F4      		brpl 1b
+ 502 0226 E22B      		or r30,r18
+ 503 0228 8091 0000 		lds r24,subminutes
+ 504 022c 9091 0000 		lds r25,subminutes+1
+ 505 0230 82FF      		sbrs r24,2
+ 506 0232 00C0      		rjmp .L16
+ 507               		.stabn	68,0,28,.LM32-.LFBB2
+ 508               	.LM32:
+ 509 0234 7723      		tst r23
+ 510 0236 01F4      		brne .L17
+ 511               	.L16:
+ 512               		.stabn	68,0,28,.LM33-.LFBB2
+ 513               	.LM33:
+ 514 0238 80E0      		ldi r24,lo8(0)
+ 515 023a 00C0      		rjmp .L8
+ 516               	.L17:
+ 517 023c 80E8      		ldi r24,lo8(-128)
+ 518               	.L8:
+ 519               		.stabn	68,0,28,.LM34-.LFBB2
+ 520               	.LM34:
+ 521 023e 8E2B      		or r24,r30
+ 522 0240 A050      		subi r26,lo8(-(framebuffer))
+ 523 0242 B040      		sbci r27,hi8(-(framebuffer))
+ 524 0244 8C93      		st X,r24
+ 525 0246 4F5F      		subi r20,lo8(-(1))
+ 526 0248 5F4F      		sbci r21,hi8(-(1))
+ 527               	.LBE4:
+  10:sync.c        ****     for (uint8_t i=0; i<5; ++i) {
+ 528               		.stabn	68,0,10,.LM35-.LFBB2
+ 529               	.LM35:
+ 530 024a 4530      		cpi r20,5
+ 531 024c 5105      		cpc r21,__zero_reg__
+ 532 024e 01F0      		breq .+2
+ 533 0250 00C0      		rjmp .L9
+ 534               	/* epilogue start */
+ 535               	.LBE3:
+GAS LISTING /tmp/ccNyAo89.s 			page 11
+
+
+  29:sync.c        ****     }
+  30:sync.c        **** }
+ 536               		.stabn	68,0,30,.LM36-.LFBB2
+ 537               	.LM36:
+ 538 0252 DF91      		pop r29
+ 539 0254 CF91      		pop r28
+ 540 0256 1F91      		pop r17
+ 541 0258 0895      		ret
+ 542               		.size	sync_show_time, .-sync_show_time
+ 543               	.Lscope2:
+ 544               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 545               		.stabd	78,0,0
+ 546               		.stabs	"sync_output_debuginfo:F(0,15)",36,0,34,sync_output_debuginfo
+ 547               	.global	sync_output_debuginfo
+ 548               		.type	sync_output_debuginfo, @function
+ 549               	sync_output_debuginfo:
+ 550               		.stabd	46,0,0
+  31:sync.c        **** 
+  32:sync.c        **** uint8_t munch_t = 0;
+  33:sync.c        **** uint8_t munch_flag = 0;
+  34:sync.c        **** void sync_output_debuginfo(void) {
+ 551               		.stabn	68,0,34,.LM37-.LFBB3
+ 552               	.LM37:
+ 553               	.LFBB3:
+ 554               	/* prologue: function */
+ 555               	/* frame size = 0 */
+ 556               	/* stack size = 0 */
+ 557               	.L__stack_usage = 0
+  35:sync.c        ****     /*
+  36:sync.c        ****     framebuffer[0] = time[0];
+  37:sync.c        ****     framebuffer[1] = time[1];
+  38:sync.c        ****     framebuffer[2] = time[2];
+  39:sync.c        ****     framebuffer[3] = time[3];
+  40:sync.c        **** 
+  41:sync.c        ****     framebuffer[4] = time_p[0];
+  42:sync.c        ****     framebuffer[5] = time_p[1];
+  43:sync.c        ****     framebuffer[6] = time_p[2];
+  44:sync.c        ****     framebuffer[7] = time_p[3];
+  45:sync.c        **** 
+  46:sync.c        ****     framebuffer[8] = shift[0];
+  47:sync.c        ****     framebuffer[9] = shift[1];
+  48:sync.c        ****     framebuffer[10] = shift[2];
+  49:sync.c        ****     framebuffer[11] = shift[3];
+  50:sync.c        **** 
+  51:sync.c        ****     framebuffer[12] = subminutes >> 8;
+  52:sync.c        ****     framebuffer[13] = subminutes & 0xff;
+  53:sync.c        ****     framebuffer[14] = subsubminutes;
+  54:sync.c        **** 
+  55:sync.c        ****     uint8_t b = io_buttons_read();
+  56:sync.c        ****     framebuffer[15] = b;
+  57:sync.c        ****     if (b == 0)
+  58:sync.c        ****         io_buzzer_set(1);
+  59:sync.c        ****     else
+  60:sync.c        ****         io_buzzer_set(0);
+  61:sync.c        ****     if (b != 0xf) {
+  62:sync.c        ****         framebuffer[16] = button_down_time[0];
+  63:sync.c        ****         framebuffer[17] = button_down_time[1];
+GAS LISTING /tmp/ccNyAo89.s 			page 12
+
+
+  64:sync.c        ****         framebuffer[18] = button_down_time[2];
+  65:sync.c        ****         framebuffer[19] = button_down_time[3];
+  66:sync.c        ****     }
+  67:sync.c        ****     else {
+  68:sync.c        ****     */
+  69:sync.c        ****     if ((subminutes & 0x01) != 0) {
+ 558               		.stabn	68,0,69,.LM38-.LFBB3
+ 559               	.LM38:
+ 560 025a 8091 0000 		lds r24,subminutes
+ 561 025e 9091 0000 		lds r25,subminutes+1
+ 562 0262 80FF      		sbrs r24,0
+ 563 0264 00C0      		rjmp .L20
+  70:sync.c        ****         if (munch_flag == 0) {
+ 564               		.stabn	68,0,70,.LM39-.LFBB3
+ 565               	.LM39:
+ 566 0266 8091 0000 		lds r24,munch_flag
+ 567 026a 8823      		tst r24
+ 568 026c 01F4      		brne .L19
+  71:sync.c        ****             munch_flag = 1;
+ 569               		.stabn	68,0,71,.LM40-.LFBB3
+ 570               	.LM40:
+ 571 026e 81E0      		ldi r24,lo8(1)
+ 572 0270 8093 0000 		sts munch_flag,r24
+  72:sync.c        ****             munch_t = (munch_t+1) & 7;
+ 573               		.stabn	68,0,72,.LM41-.LFBB3
+ 574               	.LM41:
+ 575 0274 6091 0000 		lds r22,munch_t
+ 576 0278 6F5F      		subi r22,lo8(-(1))
+ 577 027a 6770      		andi r22,lo8(7)
+ 578 027c 6093 0000 		sts munch_t,r22
+ 579 0280 80E0      		ldi r24,lo8(0)
+ 580 0282 90E0      		ldi r25,hi8(0)
+ 581               	.LBB13:
+  73:sync.c        ****             for (uint8_t munch_x=0; munch_x<8; ++munch_x) {
+  74:sync.c        ****                 framebuffer[munch_x] ^= 1<<(munch_x^munch_t);
+ 582               		.stabn	68,0,74,.LM42-.LFBB3
+ 583               	.LM42:
+ 584 0284 41E0      		ldi r20,lo8(1)
+ 585 0286 50E0      		ldi r21,hi8(1)
+ 586               	.L22:
+ 587               		.stabn	68,0,74,.LM43-.LFBB3
+ 588               	.LM43:
+ 589 0288 FC01      		movw r30,r24
+ 590 028a E050      		subi r30,lo8(-(framebuffer))
+ 591 028c F040      		sbci r31,hi8(-(framebuffer))
+ 592 028e 7081      		ld r23,Z
+ 593 0290 262F      		mov r18,r22
+ 594 0292 2827      		eor r18,r24
+ 595 0294 DA01      		movw r26,r20
+ 596 0296 00C0      		rjmp 2f
+ 597 0298 AA0F      	1:	lsl r26
+ 598 029a BB1F      		rol r27
+ 599 029c 2A95      	2:	dec r18
+ 600 029e 02F4      		brpl 1b
+ 601 02a0 9D01      		movw r18,r26
+ 602 02a2 7A27      		eor r23,r26
+ 603 02a4 7083      		st Z,r23
+GAS LISTING /tmp/ccNyAo89.s 			page 13
+
+
+  75:sync.c        ****                 framebuffer[8+munch_x] ^= (1<<(munch_x^munch_t));
+ 604               		.stabn	68,0,75,.LM44-.LFBB3
+ 605               	.LM44:
+ 606 02a6 FC01      		movw r30,r24
+ 607 02a8 E050      		subi r30,lo8(-(framebuffer+8))
+ 608 02aa F040      		sbci r31,hi8(-(framebuffer+8))
+ 609 02ac 3081      		ld r19,Z
+ 610 02ae 3227      		eor r19,r18
+ 611 02b0 3083      		st Z,r19
+  76:sync.c        ****                 framebuffer[16+munch_x] ^= (1<<(munch_x^munch_t));
+ 612               		.stabn	68,0,76,.LM45-.LFBB3
+ 613               	.LM45:
+ 614 02b2 FC01      		movw r30,r24
+ 615 02b4 E050      		subi r30,lo8(-(framebuffer+16))
+ 616 02b6 F040      		sbci r31,hi8(-(framebuffer+16))
+ 617 02b8 3081      		ld r19,Z
+ 618 02ba 3227      		eor r19,r18
+ 619 02bc 3083      		st Z,r19
+ 620 02be 0196      		adiw r24,1
+  73:sync.c        ****             for (uint8_t munch_x=0; munch_x<8; ++munch_x) {
+ 621               		.stabn	68,0,73,.LM46-.LFBB3
+ 622               	.LM46:
+ 623 02c0 8830      		cpi r24,8
+ 624 02c2 9105      		cpc r25,__zero_reg__
+ 625 02c4 01F4      		brne .L22
+ 626 02c6 0895      		ret
+ 627               	.L20:
+ 628               	.LBE13:
+  77:sync.c        ****             }
+  78:sync.c        ****         }
+  79:sync.c        ****     }
+  80:sync.c        ****     else {
+  81:sync.c        ****         munch_flag = 0;
+ 629               		.stabn	68,0,81,.LM47-.LFBB3
+ 630               	.LM47:
+ 631 02c8 1092 0000 		sts munch_flag,__zero_reg__
+ 632               	.L19:
+ 633 02cc 0895      		ret
+ 634               		.size	sync_output_debuginfo, .-sync_output_debuginfo
+ 635               	.Lscope3:
+ 636               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 637               		.stabd	78,0,0
+ 638               		.stabs	"sync_show_menu:F(0,15)",36,0,85,sync_show_menu
+ 639               		.stabs	"state:P(5,2)",64,0,85,24
+ 640               	.global	sync_show_menu
+ 641               		.type	sync_show_menu, @function
+ 642               	sync_show_menu:
+ 643               		.stabd	46,0,0
+  82:sync.c        ****     }
+  83:sync.c        **** }
+  84:sync.c        **** 
+  85:sync.c        **** void sync_show_menu(uint8_t state) {
+ 644               		.stabn	68,0,85,.LM48-.LFBB4
+ 645               	.LM48:
+ 646               	.LFBB4:
+ 647 02ce CF93      		push r28
+ 648 02d0 DF93      		push r29
+GAS LISTING /tmp/ccNyAo89.s 			page 14
+
+
+ 649               	/* prologue: function */
+ 650               	/* frame size = 0 */
+ 651               	/* stack size = 2 */
+ 652               	.L__stack_usage = 2
+ 653               		.stabn	68,0,85,.LM49-.LFBB4
+ 654               	.LM49:
+ 655 02d2 20E0      		ldi r18,lo8(0)
+ 656 02d4 30E0      		ldi r19,hi8(0)
+ 657               	.L25:
+ 658               	.LBB14:
+ 659               	.LBB15:
+  86:sync.c        ****     for (uint8_t i=0; i<8; ++i) {
+  87:sync.c        ****         framebuffer[i] = pgm_read_byte(&symbols[i]);
+ 660               		.stabn	68,0,87,.LM50-.LFBB4
+ 661               	.LM50:
+ 662 02d6 F901      		movw r30,r18
+ 663 02d8 E050      		subi r30,lo8(-(symbols))
+ 664 02da F040      		sbci r31,hi8(-(symbols))
+ 665               	/* #APP */
+ 666               	 ;  87 "sync.c" 1
+ 667 02dc E491      		lpm r30, Z
+ 668               		
+ 669               	 ;  0 "" 2
+ 670               	/* #NOAPP */
+ 671               	.LBE15:
+ 672 02de A0E0      		ldi r26,lo8(framebuffer)
+ 673 02e0 B0E0      		ldi r27,hi8(framebuffer)
+ 674 02e2 E901      		movw r28,r18
+ 675 02e4 CA0F      		add r28,r26
+ 676 02e6 DB1F      		adc r29,r27
+ 677 02e8 E883      		st Y,r30
+  88:sync.c        ****         framebuffer[16+i] = 0;
+ 678               		.stabn	68,0,88,.LM51-.LFBB4
+ 679               	.LM51:
+ 680 02ea F901      		movw r30,r18
+ 681 02ec E050      		subi r30,lo8(-(framebuffer+16))
+ 682 02ee F040      		sbci r31,hi8(-(framebuffer+16))
+ 683 02f0 1082      		st Z,__zero_reg__
+ 684 02f2 2F5F      		subi r18,lo8(-(1))
+ 685 02f4 3F4F      		sbci r19,hi8(-(1))
+  86:sync.c        ****     for (uint8_t i=0; i<8; ++i) {
+ 686               		.stabn	68,0,86,.LM52-.LFBB4
+ 687               	.LM52:
+ 688 02f6 2830      		cpi r18,8
+ 689 02f8 3105      		cpc r19,__zero_reg__
+ 690 02fa 01F4      		brne .L25
+ 691               	.LBE14:
+  89:sync.c        ****     }
+  90:sync.c        ****     framebuffer[8] = 0;
+ 692               		.stabn	68,0,90,.LM53-.LFBB4
+ 693               	.LM53:
+ 694 02fc 1896      		adiw r26,8
+ 695 02fe 1C92      		st X,__zero_reg__
+ 696 0300 1897      		sbiw r26,8
+  91:sync.c        ****     switch (state & MENU_MASK) {
+ 697               		.stabn	68,0,91,.LM54-.LFBB4
+ 698               	.LM54:
+GAS LISTING /tmp/ccNyAo89.s 			page 15
+
+
+ 699 0302 80FD      		sbrc r24,0
+ 700 0304 00C0      		rjmp .L32
+  92:sync.c        ****         case MENU_ALARM:
+  93:sync.c        ****             if (((state & ALARM_ON) != 0) || subminutes & 0x10) {
+ 701               		.stabn	68,0,93,.LM55-.LFBB4
+ 702               	.LM55:
+ 703 0306 81FD      		sbrc r24,1
+ 704 0308 00C0      		rjmp .L33
+ 705               		.stabn	68,0,93,.LM56-.LFBB4
+ 706               	.LM56:
+ 707 030a 2091 0000 		lds r18,subminutes
+ 708 030e 3091 0000 		lds r19,subminutes+1
+ 709 0312 24FF      		sbrs r18,4
+ 710 0314 00C0      		rjmp .L29
+ 711               	.L33:
+ 712               		.stabn	68,0,93,.LM57-.LFBB4
+ 713               	.LM57:
+ 714 0316 20E0      		ldi r18,lo8(0)
+ 715               	.L36:
+ 716               	.LBB16:
+  94:sync.c        ****                 for (uint8_t i=0; i<7; ++i)
+  95:sync.c        ****                     framebuffer[9+i] = pgm_read_byte(&symbols[15+i]);
+ 717               		.stabn	68,0,95,.LM58-.LFBB4
+ 718               	.LM58:
+ 719 0318 822F      		mov r24,r18
+ 720 031a 90E0      		ldi r25,lo8(0)
+ 721               	.LBB17:
+ 722 031c FC01      		movw r30,r24
+ 723 031e E050      		subi r30,lo8(-(symbols+15))
+ 724 0320 F040      		sbci r31,hi8(-(symbols+15))
+ 725               	/* #APP */
+ 726               	 ;  95 "sync.c" 1
+ 727 0322 E491      		lpm r30, Z
+ 728               		
+ 729               	 ;  0 "" 2
+ 730               	/* #NOAPP */
+ 731               	.LBE17:
+ 732 0324 8050      		subi r24,lo8(-(framebuffer+9))
+ 733 0326 9040      		sbci r25,hi8(-(framebuffer+9))
+ 734 0328 DC01      		movw r26,r24
+ 735 032a EC93      		st X,r30
+  94:sync.c        ****                 for (uint8_t i=0; i<7; ++i)
+ 736               		.stabn	68,0,94,.LM59-.LFBB4
+ 737               	.LM59:
+ 738 032c 2F5F      		subi r18,lo8(-(1))
+ 739 032e 2730      		cpi r18,lo8(7)
+ 740 0330 01F4      		brne .L36
+ 741 0332 00C0      		rjmp .L24
+ 742               	.L29:
+ 743               	.LBE16:
+  96:sync.c        ****             }
+  97:sync.c        ****             else {
+  98:sync.c        ****                 if ((state & ALARM_SNOOZE) != 0) {
+ 744               		.stabn	68,0,98,.LM60-.LFBB4
+ 745               	.LM60:
+ 746 0334 82FF      		sbrs r24,2
+ 747 0336 00C0      		rjmp .L34
+GAS LISTING /tmp/ccNyAo89.s 			page 16
+
+
+ 748               	.LBB18:
+  99:sync.c        ****                     for (uint8_t i=0; i<7; ++i)
+ 100:sync.c        ****                         framebuffer[9+i] = 0;
+ 749               		.stabn	68,0,100,.LM61-.LFBB4
+ 750               	.LM61:
+ 751 0338 1996      		adiw r26,9
+ 752 033a 1C92      		st X,__zero_reg__
+ 753 033c 1997      		sbiw r26,9
+ 754 033e 1A96      		adiw r26,10
+ 755 0340 1C92      		st X,__zero_reg__
+ 756 0342 1A97      		sbiw r26,10
+ 757 0344 1B96      		adiw r26,11
+ 758 0346 1C92      		st X,__zero_reg__
+ 759 0348 1B97      		sbiw r26,11
+ 760 034a 1C96      		adiw r26,12
+ 761 034c 1C92      		st X,__zero_reg__
+ 762 034e 1C97      		sbiw r26,12
+ 763 0350 1D96      		adiw r26,13
+ 764 0352 1C92      		st X,__zero_reg__
+ 765 0354 1D97      		sbiw r26,13
+ 766 0356 1E96      		adiw r26,14
+ 767 0358 1C92      		st X,__zero_reg__
+ 768 035a 1E97      		sbiw r26,14
+ 769 035c 1F96      		adiw r26,15
+ 770 035e 1C92      		st X,__zero_reg__
+ 771 0360 1F97      		sbiw r26,15
+ 772 0362 00C0      		rjmp .L24
+ 773               	.L34:
+ 774               	.LBE18:
+  98:sync.c        ****                 if ((state & ALARM_SNOOZE) != 0) {
+ 775               		.stabn	68,0,98,.LM62-.LFBB4
+ 776               	.LM62:
+ 777 0364 86E1      		ldi r24,lo8(22)
+ 778 0366 90E0      		ldi r25,hi8(22)
+ 779               	.L31:
+ 780               	.LBB19:
+ 781               	.LBB20:
+ 101:sync.c        ****                 }
+ 102:sync.c        ****                 else {
+ 103:sync.c        ****                     for (uint8_t i=0; i<7; ++i)
+ 104:sync.c        ****                         framebuffer[9+i] = pgm_read_byte(&symbols[22+i]);
+ 782               		.stabn	68,0,104,.LM63-.LFBB4
+ 783               	.LM63:
+ 784 0368 FC01      		movw r30,r24
+ 785 036a E050      		subi r30,lo8(-(symbols))
+ 786 036c F040      		sbci r31,hi8(-(symbols))
+ 787               	/* #APP */
+ 788               	 ;  104 "sync.c" 1
+ 789 036e E491      		lpm r30, Z
+ 790               		
+ 791               	 ;  0 "" 2
+ 792               	/* #NOAPP */
+ 793               	.LBE20:
+ 794 0370 DC01      		movw r26,r24
+ 795 0372 A050      		subi r26,lo8(-(framebuffer-13))
+ 796 0374 B040      		sbci r27,hi8(-(framebuffer-13))
+ 797 0376 EC93      		st X,r30
+GAS LISTING /tmp/ccNyAo89.s 			page 17
+
+
+ 798 0378 0196      		adiw r24,1
+ 103:sync.c        ****                     for (uint8_t i=0; i<7; ++i)
+ 799               		.stabn	68,0,103,.LM64-.LFBB4
+ 800               	.LM64:
+ 801 037a 8D31      		cpi r24,29
+ 802 037c 9105      		cpc r25,__zero_reg__
+ 803 037e 01F4      		brne .L31
+ 804 0380 00C0      		rjmp .L24
+ 805               	.L32:
+ 806               	.LBE19:
+  91:sync.c        ****     switch (state & MENU_MASK) {
+ 807               		.stabn	68,0,91,.LM65-.LFBB4
+ 808               	.LM65:
+ 809 0382 E8E0      		ldi r30,lo8(8)
+ 810 0384 F0E0      		ldi r31,hi8(8)
+ 811 0386 00C0      		rjmp .L27
+ 812               	.L35:
+ 813               	.LBB21:
+ 105:sync.c        ****                 }
+ 106:sync.c        ****             }
+ 107:sync.c        ****             break;
+ 108:sync.c        ****         case MENU_TIME:
+ 109:sync.c        ****             for (uint8_t i=0; i<7; ++i)
+ 814               		.stabn	68,0,109,.LM66-.LFBB4
+ 815               	.LM66:
+ 816 0388 FC01      		movw r30,r24
+ 817               	.L27:
+ 818               	.LBE21:
+ 819               	.LBB23:
+  85:sync.c        **** void sync_show_menu(uint8_t state) {
+ 820               		.stabn	68,0,85,.LM67-.LFBB4
+ 821               	.LM67:
+ 822 038a CF01      		movw r24,r30
+ 823 038c 0196      		adiw r24,1
+ 824               	.LBE23:
+ 825               	.LBB24:
+ 826               	.LBB22:
+ 110:sync.c        ****                 framebuffer[9+i] = pgm_read_byte(&symbols[8+i]);
+ 827               		.stabn	68,0,110,.LM68-.LFBB4
+ 828               	.LM68:
+ 829 038e E050      		subi r30,lo8(-(symbols))
+ 830 0390 F040      		sbci r31,hi8(-(symbols))
+ 831               	/* #APP */
+ 832               	 ;  110 "sync.c" 1
+ 833 0392 E491      		lpm r30, Z
+ 834               		
+ 835               	 ;  0 "" 2
+ 836               	/* #NOAPP */
+ 837               	.LBE22:
+ 838 0394 DC01      		movw r26,r24
+ 839 0396 A050      		subi r26,lo8(-(framebuffer))
+ 840 0398 B040      		sbci r27,hi8(-(framebuffer))
+ 841 039a EC93      		st X,r30
+ 109:sync.c        ****             for (uint8_t i=0; i<7; ++i)
+ 842               		.stabn	68,0,109,.LM69-.LFBB4
+ 843               	.LM69:
+ 844 039c 8F30      		cpi r24,15
+GAS LISTING /tmp/ccNyAo89.s 			page 18
+
+
+ 845 039e 9105      		cpc r25,__zero_reg__
+ 846 03a0 01F4      		brne .L35
+ 847               	.L24:
+ 848               	/* epilogue start */
+ 849               	.LBE24:
+ 111:sync.c        ****             break;
+ 112:sync.c        ****     }
+ 113:sync.c        **** }
+ 850               		.stabn	68,0,113,.LM70-.LFBB4
+ 851               	.LM70:
+ 852 03a2 DF91      		pop r29
+ 853 03a4 CF91      		pop r28
+ 854 03a6 0895      		ret
+ 855               		.size	sync_show_menu, .-sync_show_menu
+ 856               		.stabs	"i:r(5,2)",64,0,94,18
+ 857               		.stabn	192,0,0,.LBB16-.LFBB4
+ 858               		.stabn	224,0,0,.LBE16-.LFBB4
+ 859               	.Lscope4:
+ 860               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 861               		.stabd	78,0,0
+ 862               		.stabs	"sync_show_number_editor:F(0,15)",36,0,115,sync_show_number_editor
+ 863               		.stabs	"numbers:P(0,16)=*(0,17)=B(5,2)",64,0,115,28
+ 864               		.stabs	"select:P(5,2)",64,0,115,22
+ 865               	.global	sync_show_number_editor
+ 866               		.type	sync_show_number_editor, @function
+ 867               	sync_show_number_editor:
+ 868               		.stabd	46,0,0
+ 114:sync.c        **** 
+ 115:sync.c        **** void sync_show_number_editor(volatile uint8_t *numbers, uint8_t select) {
+ 869               		.stabn	68,0,115,.LM71-.LFBB5
+ 870               	.LM71:
+ 871               	.LFBB5:
+ 872 03a8 CF93      		push r28
+ 873 03aa DF93      		push r29
+ 874               	/* prologue: function */
+ 875               	/* frame size = 0 */
+ 876               	/* stack size = 2 */
+ 877               	.L__stack_usage = 2
+ 878 03ac EC01      		movw r28,r24
+ 879               		.stabn	68,0,115,.LM72-.LFBB5
+ 880               	.LM72:
+ 881 03ae 20E0      		ldi r18,lo8(0)
+ 882 03b0 30E0      		ldi r19,hi8(0)
+ 883               	.L45:
+ 884               	.LBB25:
+ 885               	.LBB26:
+ 116:sync.c        ****     for (uint8_t i=0; i<5; ++i) {
+ 117:sync.c        ****         framebuffer[i] = pgm_read_byte(&font[numbers[0]*5+i]) | (subminutes & 0x04 && select==0?128
+ 886               		.stabn	68,0,117,.LM73-.LFBB5
+ 887               	.LM73:
+ 888 03b2 8881      		ld r24,Y
+ 889 03b4 90E0      		ldi r25,lo8(0)
+ 890 03b6 FC01      		movw r30,r24
+ 891 03b8 EE0F      		lsl r30
+ 892 03ba FF1F      		rol r31
+ 893 03bc EE0F      		lsl r30
+ 894 03be FF1F      		rol r31
+GAS LISTING /tmp/ccNyAo89.s 			page 19
+
+
+ 895 03c0 E80F      		add r30,r24
+ 896 03c2 F91F      		adc r31,r25
+ 897 03c4 E20F      		add r30,r18
+ 898 03c6 F31F      		adc r31,r19
+ 899 03c8 E050      		subi r30,lo8(-(font))
+ 900 03ca F040      		sbci r31,hi8(-(font))
+ 901               	/* #APP */
+ 902               	 ;  117 "sync.c" 1
+ 903 03cc E491      		lpm r30, Z
+ 904               		
+ 905               	 ;  0 "" 2
+ 906               	/* #NOAPP */
+ 907               	.LBE26:
+ 908 03ce 8091 0000 		lds r24,subminutes
+ 909 03d2 9091 0000 		lds r25,subminutes+1
+ 910 03d6 82FF      		sbrs r24,2
+ 911 03d8 00C0      		rjmp .L46
+ 912               		.stabn	68,0,117,.LM74-.LFBB5
+ 913               	.LM74:
+ 914 03da 6623      		tst r22
+ 915 03dc 01F0      		breq .L47
+ 916               	.L46:
+ 917               		.stabn	68,0,117,.LM75-.LFBB5
+ 918               	.LM75:
+ 919 03de 80E0      		ldi r24,lo8(0)
+ 920 03e0 00C0      		rjmp .L41
+ 921               	.L47:
+ 922 03e2 80E8      		ldi r24,lo8(-128)
+ 923               	.L41:
+ 924               		.stabn	68,0,117,.LM76-.LFBB5
+ 925               	.LM76:
+ 926 03e4 8E2B      		or r24,r30
+ 927 03e6 D901      		movw r26,r18
+ 928 03e8 A050      		subi r26,lo8(-(framebuffer))
+ 929 03ea B040      		sbci r27,hi8(-(framebuffer))
+ 930 03ec 8C93      		st X,r24
+ 115:sync.c        **** void sync_show_number_editor(volatile uint8_t *numbers, uint8_t select) {
+ 931               		.stabn	68,0,115,.LM77-.LFBB5
+ 932               	.LM77:
+ 933 03ee A901      		movw r20,r18
+ 934 03f0 4A5F      		subi r20,lo8(-(6))
+ 935 03f2 5F4F      		sbci r21,hi8(-(6))
+ 936               	.LBB27:
+ 118:sync.c        ****         framebuffer[6+i] = pgm_read_byte(&font[numbers[1]*5+i]) | (subminutes & 0x04 && select==1?1
+ 937               		.stabn	68,0,118,.LM78-.LFBB5
+ 938               	.LM78:
+ 939 03f4 8981      		ldd r24,Y+1
+ 940 03f6 90E0      		ldi r25,lo8(0)
+ 941 03f8 FC01      		movw r30,r24
+ 942 03fa EE0F      		lsl r30
+ 943 03fc FF1F      		rol r31
+ 944 03fe EE0F      		lsl r30
+ 945 0400 FF1F      		rol r31
+ 946 0402 E80F      		add r30,r24
+ 947 0404 F91F      		adc r31,r25
+ 948 0406 E20F      		add r30,r18
+ 949 0408 F31F      		adc r31,r19
+GAS LISTING /tmp/ccNyAo89.s 			page 20
+
+
+ 950 040a E050      		subi r30,lo8(-(font))
+ 951 040c F040      		sbci r31,hi8(-(font))
+ 952               	/* #APP */
+ 953               	 ;  118 "sync.c" 1
+ 954 040e E491      		lpm r30, Z
+ 955               		
+ 956               	 ;  0 "" 2
+ 957               	/* #NOAPP */
+ 958               	.LBE27:
+ 959 0410 8091 0000 		lds r24,subminutes
+ 960 0414 9091 0000 		lds r25,subminutes+1
+ 961 0418 82FF      		sbrs r24,2
+ 962 041a 00C0      		rjmp .L48
+ 963               		.stabn	68,0,118,.LM79-.LFBB5
+ 964               	.LM79:
+ 965 041c 6130      		cpi r22,lo8(1)
+ 966 041e 01F0      		breq .L49
+ 967               	.L48:
+ 968               		.stabn	68,0,118,.LM80-.LFBB5
+ 969               	.LM80:
+ 970 0420 80E0      		ldi r24,lo8(0)
+ 971 0422 00C0      		rjmp .L42
+ 972               	.L49:
+ 973 0424 80E8      		ldi r24,lo8(-128)
+ 974               	.L42:
+ 975               		.stabn	68,0,118,.LM81-.LFBB5
+ 976               	.LM81:
+ 977 0426 8E2B      		or r24,r30
+ 978 0428 4050      		subi r20,lo8(-(framebuffer))
+ 979 042a 5040      		sbci r21,hi8(-(framebuffer))
+ 980 042c FA01      		movw r30,r20
+ 981 042e 8083      		st Z,r24
+ 115:sync.c        **** void sync_show_number_editor(volatile uint8_t *numbers, uint8_t select) {
+ 982               		.stabn	68,0,115,.LM82-.LFBB5
+ 983               	.LM82:
+ 984 0430 A901      		movw r20,r18
+ 985 0432 435F      		subi r20,lo8(-(13))
+ 986 0434 5F4F      		sbci r21,hi8(-(13))
+ 987               	.LBB28:
+ 119:sync.c        ****         framebuffer[13+i] = pgm_read_byte(&font[numbers[2]*5+i]) | (subminutes & 0x04 && select==2?
+ 988               		.stabn	68,0,119,.LM83-.LFBB5
+ 989               	.LM83:
+ 990 0436 8A81      		ldd r24,Y+2
+ 991 0438 90E0      		ldi r25,lo8(0)
+ 992 043a FC01      		movw r30,r24
+ 993 043c EE0F      		lsl r30
+ 994 043e FF1F      		rol r31
+ 995 0440 EE0F      		lsl r30
+ 996 0442 FF1F      		rol r31
+ 997 0444 E80F      		add r30,r24
+ 998 0446 F91F      		adc r31,r25
+ 999 0448 E20F      		add r30,r18
+ 1000 044a F31F      		adc r31,r19
+ 1001 044c E050      		subi r30,lo8(-(font))
+ 1002 044e F040      		sbci r31,hi8(-(font))
+ 1003               	/* #APP */
+ 1004               	 ;  119 "sync.c" 1
+GAS LISTING /tmp/ccNyAo89.s 			page 21
+
+
+ 1005 0450 E491      		lpm r30, Z
+ 1006               		
+ 1007               	 ;  0 "" 2
+ 1008               	/* #NOAPP */
+ 1009               	.LBE28:
+ 1010 0452 8091 0000 		lds r24,subminutes
+ 1011 0456 9091 0000 		lds r25,subminutes+1
+ 1012 045a 82FF      		sbrs r24,2
+ 1013 045c 00C0      		rjmp .L50
+ 1014               		.stabn	68,0,119,.LM84-.LFBB5
+ 1015               	.LM84:
+ 1016 045e 6230      		cpi r22,lo8(2)
+ 1017 0460 01F0      		breq .L51
+ 1018               	.L50:
+ 1019               		.stabn	68,0,119,.LM85-.LFBB5
+ 1020               	.LM85:
+ 1021 0462 80E0      		ldi r24,lo8(0)
+ 1022 0464 00C0      		rjmp .L43
+ 1023               	.L51:
+ 1024 0466 80E8      		ldi r24,lo8(-128)
+ 1025               	.L43:
+ 1026               		.stabn	68,0,119,.LM86-.LFBB5
+ 1027               	.LM86:
+ 1028 0468 8E2B      		or r24,r30
+ 1029 046a 4050      		subi r20,lo8(-(framebuffer))
+ 1030 046c 5040      		sbci r21,hi8(-(framebuffer))
+ 1031 046e FA01      		movw r30,r20
+ 1032 0470 8083      		st Z,r24
+ 115:sync.c        **** void sync_show_number_editor(volatile uint8_t *numbers, uint8_t select) {
+ 1033               		.stabn	68,0,115,.LM87-.LFBB5
+ 1034               	.LM87:
+ 1035 0472 A901      		movw r20,r18
+ 1036 0474 4D5E      		subi r20,lo8(-(19))
+ 1037 0476 5F4F      		sbci r21,hi8(-(19))
+ 1038               	.LBB29:
+ 120:sync.c        ****         framebuffer[19+i] = pgm_read_byte(&font[numbers[3]*5+i]) | (subminutes & 0x04 && select==3?
+ 1039               		.stabn	68,0,120,.LM88-.LFBB5
+ 1040               	.LM88:
+ 1041 0478 8B81      		ldd r24,Y+3
+ 1042 047a 90E0      		ldi r25,lo8(0)
+ 1043 047c FC01      		movw r30,r24
+ 1044 047e EE0F      		lsl r30
+ 1045 0480 FF1F      		rol r31
+ 1046 0482 EE0F      		lsl r30
+ 1047 0484 FF1F      		rol r31
+ 1048 0486 E80F      		add r30,r24
+ 1049 0488 F91F      		adc r31,r25
+ 1050 048a E20F      		add r30,r18
+ 1051 048c F31F      		adc r31,r19
+ 1052 048e E050      		subi r30,lo8(-(font))
+ 1053 0490 F040      		sbci r31,hi8(-(font))
+ 1054               	/* #APP */
+ 1055               	 ;  120 "sync.c" 1
+ 1056 0492 E491      		lpm r30, Z
+ 1057               		
+ 1058               	 ;  0 "" 2
+ 1059               	/* #NOAPP */
+GAS LISTING /tmp/ccNyAo89.s 			page 22
+
+
+ 1060               	.LBE29:
+ 1061 0494 8091 0000 		lds r24,subminutes
+ 1062 0498 9091 0000 		lds r25,subminutes+1
+ 1063 049c 82FF      		sbrs r24,2
+ 1064 049e 00C0      		rjmp .L52
+ 1065               		.stabn	68,0,120,.LM89-.LFBB5
+ 1066               	.LM89:
+ 1067 04a0 6330      		cpi r22,lo8(3)
+ 1068 04a2 01F0      		breq .L53
+ 1069               	.L52:
+ 1070               		.stabn	68,0,120,.LM90-.LFBB5
+ 1071               	.LM90:
+ 1072 04a4 80E0      		ldi r24,lo8(0)
+ 1073 04a6 00C0      		rjmp .L44
+ 1074               	.L53:
+ 1075 04a8 80E8      		ldi r24,lo8(-128)
+ 1076               	.L44:
+ 1077               		.stabn	68,0,120,.LM91-.LFBB5
+ 1078               	.LM91:
+ 1079 04aa 8E2B      		or r24,r30
+ 1080 04ac 4050      		subi r20,lo8(-(framebuffer))
+ 1081 04ae 5040      		sbci r21,hi8(-(framebuffer))
+ 1082 04b0 FA01      		movw r30,r20
+ 1083 04b2 8083      		st Z,r24
+ 1084 04b4 2F5F      		subi r18,lo8(-(1))
+ 1085 04b6 3F4F      		sbci r19,hi8(-(1))
+ 116:sync.c        ****     for (uint8_t i=0; i<5; ++i) {
+ 1086               		.stabn	68,0,116,.LM92-.LFBB5
+ 1087               	.LM92:
+ 1088 04b8 2530      		cpi r18,5
+ 1089 04ba 3105      		cpc r19,__zero_reg__
+ 1090 04bc 01F0      		breq .+2
+ 1091 04be 00C0      		rjmp .L45
+ 1092               	/* epilogue start */
+ 1093               	.LBE25:
+ 121:sync.c        ****     }
+ 122:sync.c        **** }
+ 1094               		.stabn	68,0,122,.LM93-.LFBB5
+ 1095               	.LM93:
+ 1096 04c0 DF91      		pop r29
+ 1097 04c2 CF91      		pop r28
+ 1098 04c4 0895      		ret
+ 1099               		.size	sync_show_number_editor, .-sync_show_number_editor
+ 1100               	.Lscope5:
+ 1101               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 1102               		.stabd	78,0,0
+ 1103               	.global	munch_flag
+ 1104               	.global	munch_flag
+ 1105               		.section .bss
+ 1106               		.type	munch_flag, @object
+ 1107               		.size	munch_flag, 1
+ 1108               	munch_flag:
+ 1109 0000 00        		.skip 1,0
+ 1110               	.global	munch_t
+ 1111               	.global	munch_t
+ 1112               		.type	munch_t, @object
+ 1113               		.size	munch_t, 1
+GAS LISTING /tmp/ccNyAo89.s 			page 23
+
+
+ 1114               	munch_t:
+ 1115 0001 00        		.skip 1,0
+ 1116               		.stabs	"munch_t:G(5,2)",32,0,32,0
+ 1117               		.stabs	"munch_flag:G(5,2)",32,0,33,0
+ 1118               		.text
+ 1119               		.stabs	"",100,0,0,.Letext0
+ 1120               	.Letext0:
+GAS LISTING /tmp/ccNyAo89.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sync.c
+     /tmp/ccNyAo89.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccNyAo89.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccNyAo89.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccNyAo89.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccNyAo89.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccNyAo89.s:91     .text:00000000 sync_clear_screen
+     /tmp/ccNyAo89.s:131    .text:00000016 sync_show_time
+     /tmp/ccNyAo89.s:549    .text:0000025a sync_output_debuginfo
+     /tmp/ccNyAo89.s:1108   .bss:00000000 munch_flag
+     /tmp/ccNyAo89.s:1114   .bss:00000001 munch_t
+     /tmp/ccNyAo89.s:642    .text:000002ce sync_show_menu
+     /tmp/ccNyAo89.s:867    .text:000003a8 sync_show_number_editor
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+framebuffer
+time
+font
+time_p
+shift
+subminutes
+symbols

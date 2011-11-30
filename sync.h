@@ -15,6 +15,7 @@
 #define ALARM_SNOOZE 4
 
 
+void sync_clear_screen(void);
 void sync_show_time(uint8_t alarm_blink);
 void sync_output_debuginfo(void);
 void sync_show_menu(uint8_t state);

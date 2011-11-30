@@ -37,41 +37,47 @@ int main(void) {
     uint8_t numbersel = 0;
     for (;;) {
 
-        if (((alarmstate & ALARM_ON) != 0 && time[0]==alarm[0] && time[1]==alarm[1] && time[2]==alarm[2] && time[3]==alarm[3]) ||
-                ((alarmstate & ALARM_SNOOZE) != 0 && snooze_delay == 0)) {
-            mode = SHOW_TIME_ALARM;
-        }
 
         switch (mode) {
             case SHOW_TIME:
+                sync_show_time(0);
                 if (pressstate == 0 && button_down_time[3] >= 0x1f) {
                     pressstate |= 8;
+                    sync_clear_screen();
                     mode = MENU;
                 }
                 else if (pressstate == 0 && button_down_time[0] >= 0x2f) {
                     pressstate |= 1;
                     mode = DEBUG;
+                    sync_clear_screen();
                 }
-                sync_show_time(0);
+                if (((alarmstate & ALARM_ON) != 0 && time[0]==alarm[0] &&
+                            time[1]==alarm[1] && time[2]==alarm[2] &&
+                            time[3]==alarm[3]) ||
+                        ((alarmstate & ALARM_SNOOZE) != 0 && snooze_delay == 0)) {
+                    sync_clear_screen();
+                    mode = SHOW_TIME_ALARM;
+                }
                 break;
             case SET_TIME:
                 if (pressstate == 0) {
-                    if (button_down_time[0] >= 0x1f) {
+                    if (button_down_time[0] >= 3) {
                         pressstate |= 1;
-                        mode = MENU;
                         subsubminutes = 0;
                         subminutes = 0;
                         async_enable_timekeeping();
+                        sync_clear_screen();
+                        mode = MENU;
                     }
-                    else if (button_down_time[1] >= 0x03) {
+                    else if (button_down_time[1] >= 3) {
                         pressstate |= 2;
                         numbersel = (numbersel-1) & 3;
                     }
-                    else if (button_down_time[2] >= 0x03) {
+                    else if (button_down_time[2] >= 3) {
                         pressstate |= 4;
                         numbersel = (numbersel+1) & 3;
                     }
-                    else if (button_down_time[3] >= 0x03) {
+                    else if (button_down_time[3] >= 3) {
                         pressstate |= 8;
                         switch (numbersel) {
                             case 0:
@@ -100,19 +106,20 @@ int main(void) {
                 break;
             case SET_ALARM:
                 if (pressstate == 0) {
-                    if (button_down_time[0] >= 0x1f) {
+                    if (button_down_time[0] >= 3) {
                         pressstate |= 1;
+                        sync_clear_screen();
                         mode = MENU;
                     }
-                    else if (button_down_time[1] >= 0x03) {
+                    else if (button_down_time[1] >= 3) {
                         pressstate |= 2;
                         numbersel = (numbersel-1) & 3;
                     }
-                    else if (button_down_time[2] >= 0x03) {
+                    else if (button_down_time[2] >= 3) {
                         pressstate |= 4;
                         numbersel = (numbersel+1) & 3;
                     }
-                    else if (button_down_time[3] >= 0x03) {
+                    else if (button_down_time[3] >= 3) {
                         pressstate |= 8;
                         switch (numbersel) {
                             case 0:
@@ -140,44 +147,54 @@ int main(void) {
                 sync_show_number_editor(alarm, numbersel);
                 break;
             case MENU:
+                sync_show_menu(menustate | alarmstate);
                 if (pressstate == 0) {
-                    if (button_down_time[0] >= 0x1f) {
+                    if (button_down_time[0] >= 3) {
                         pressstate |= 1;
+                        sync_clear_screen();
                         mode = SHOW_TIME;
                     }
-                    else if (button_down_time[1] >= 0x0f) {
+                    else if (button_down_time[1] >= 3) {
                         pressstate |= 2;
                         if (menustate == MENU_ALARM)
                             menustate = MENU_TIME;
                         else
                             menustate = MENU_ALARM;
                     }
-                    else if (button_down_time[2] >= 0x07 &&
+                    else if (button_down_time[2] >= 3 &&
                             menustate == MENU_ALARM) {
                         pressstate |= 4;
-                        if (alarmstate == ALARM_ON)
-                            alarmstate = ALARM_OFF;
-                        else
+                        if (alarmstate == ALARM_OFF)
                             alarmstate = ALARM_ON;
+                        else
+                            alarmstate = ALARM_OFF;
                     }
-                    else if (button_down_time[3] >= 0x07 &&
+                    else if (button_down_time[3] >= 3 &&
                             menustate == MENU_TIME) {
                         pressstate |= 8;
+                        sync_clear_screen();
                         mode = SET_TIME;
                         async_inhibit_timekeeping();
                     }
-                    else if (button_down_time[3] >= 0x0f &&
+                    else if (button_down_time[3] >= 3 &&
                             menustate == MENU_ALARM) {
                         pressstate |= 8;
+                        sync_clear_screen();
                         mode = SET_ALARM;
                     }
                 }
-                sync_show_menu(menustate | alarmstate);
+                if (((alarmstate & ALARM_ON) != 0 && time[0]==alarm[0] &&
+                            time[1]==alarm[1] && time[2]==alarm[2] &&
+                            time[3]==alarm[3]) ||
+                        ((alarmstate & ALARM_SNOOZE) != 0 && snooze_delay == 0)) {
+                    sync_clear_screen();
+                    mode = SHOW_TIME_ALARM;
+                }
                 break;
             case SHOW_TIME_ALARM:
                 sync_show_time(1);
                 io_buzzer_set((subminutes & 0x12) == 0x12);
-                if (pressstate == 0 && button_down_time[0] >= 0x07) {
+                if (pressstate == 0 && button_down_time[0] >= 3) {
                     pressstate |= 1;
                     snooze_delay = 10;
                     alarmstate = ALARM_SNOOZE;
@@ -187,8 +204,9 @@ int main(void) {
                 break;
             default:
                 sync_output_debuginfo();
-                if (pressstate == 0 && button_down_time[3] >= 0xff) {
+                if (pressstate == 0 && button_down_time[3] >= 3) {
                     pressstate |= 8;
+                    sync_clear_screen();
                     mode = SHOW_TIME;
                 }
                 break;
